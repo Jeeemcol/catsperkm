@@ -88,7 +88,7 @@ class DB:
         and dynamic scale for the decimal, as a multi line f-string
         """
         create_table_sql = (
-            f"CREATE TABLE `cats_per_km` ("
+            f"CREATE TABLE IF NOT EXISTS `cats_per_km` ("
             f"  `OS1kmRef` varchar(255) NOT NULL,"
             f"  `CatsPerKm` decimal({self.decimal_precision}, "
             f"{self.decimal_scale}) NOT NULL,"
@@ -102,13 +102,14 @@ class DB:
             cur.execute(create_table_sql)
             self.logger.info("Table created")
         except mysql.connector.Error as err:
-            self.logger.error("Create db failed: %s", err)
+            self.logger.error("Create table failed: %s", err)
 
     def setup(self):
         """This connects to Mariadb and creates the db and table"""
         self._connect()
         self._create_database()
         self._create_table()
+        return self.connection
 
     def closedown(self):
         """This shuts down the db object including Mariadb connection"""
