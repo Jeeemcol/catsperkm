@@ -1,3 +1,34 @@
+notes on data:
+"1,152.02"
+544.7151399
+9.94E-05
+all present in the CatsPerKm column
+
+
+```
+import pandas as pd
+
+data = {
+    'column one': ['abc', 'def', 'ghi', 'jkl'],
+    'column two': ['5,363.22', '0.456', '7.89E-05', '1000']
+}
+
+df1 = df2 = pd.DataFrame(data)
+
+df1['column two'] = df1['column two'].replace(',', '', regex=True).astype(float)
+df2['column two'] = pd.to_numeric(df2['column two'], errors='coerce')
+
+print("DataFrame 1:")
+print(df1)
+
+print("\nDataFrame 2:")
+print(df2)
+
+```
+
+2 methods: both accomplish the handling of commas
+
+
 mariadb python cats per square kilometre in the UK
 
 pip install csvkit

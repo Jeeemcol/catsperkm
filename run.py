@@ -5,7 +5,7 @@ Runs the program to analyse cats per km csv creates database
 import cats_csv
 import db
 
-print(cats_csv.calc_precision())
-print(cats_csv.calc_scale())
-#db.setup(cats_csv.calc_precision())
-#db.set_precision(precision)
+precision = cats_csv.calc_precision()
+scale = cats_csv.calc_scale()
+Database = db.DB(precision, scale)
+Database.setup()

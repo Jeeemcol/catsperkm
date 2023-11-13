@@ -19,7 +19,8 @@ class DB:
         # Set up logger
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
-        formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
         # Log to console
         handler = logging.StreamHandler()
@@ -74,7 +75,9 @@ class DB:
             # Create a cursor to execute SQL statements
             create_db_query = f"CREATE DATABASE IF NOT EXISTS {DB_DATABASE}"
             try:
-                self.connection.cursor.execute(create_db_query)
+                cur = self.connection.cursor()
+                cur.execute(create_db_query)
+                self.logger.info("Database created")
             except mysql.connector.Error as err:
                 self.logger.error("Create db failed: %s", err)
 
@@ -94,8 +97,10 @@ class DB:
         )
 
         try:
-            self.connection.cursor.execute(f"USE {DB_DATABASE}")
-            self.connection.cursor.execute(create_table_sql)
+            cur = self.connection.cursor()
+            cur.execute(f"USE {DB_DATABASE}")
+            cur.execute(create_table_sql)
+            self.logger.info("Table created")
         except mysql.connector.Error as err:
             self.logger.error("Create db failed: %s", err)
 
