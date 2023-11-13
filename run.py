@@ -2,8 +2,8 @@
 Runs the program to analyse cats per km csv creates database
 (mariadb), table and uploads the data.
 """
-from sqlalchemy import create_engine
 from urllib.parse import quote_plus
+from sqlalchemy import create_engine
 import cats_csv
 import db
 from config import DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE
