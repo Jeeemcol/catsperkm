@@ -1,5 +1,5 @@
 """
-Runs the program to analyse cats per km csv creates database
+Runs the program to process cats per km csv creates database
 (mariadb), table and uploads the data.
 """
 from urllib.parse import quote_plus
@@ -14,8 +14,6 @@ scale = cats_csv.calc_scale()
 Database = db.DB(precision, scale)
 connection = Database.setup()
 encoded_password = quote_plus(DB_PASSWORD)
-
-#print(f"mysql+mysqlconnector://{DB_USER}:{encoded_password}@{DB_HOST}/{DB_DATABASE}")
 
 engine = create_engine(
     f"mysql+mysqlconnector://{DB_USER}:{encoded_password}@{DB_HOST}/{DB_DATABASE}"
