@@ -22,3 +22,4 @@ engine = create_engine(
 # use sqlalchemy engine to write using the dataframe to_sql method
 # col 1 is our primary key so we don't need the dataframe row index
 cats_csv.df.to_sql("cats_per_km", engine, if_exists="replace", index=False)
+Database.closedown()
