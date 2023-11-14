@@ -62,7 +62,7 @@ https://pypi.org/project/OSGridConverter/
 
 ## [License](https://github.com/Jeeemcol/get-email-adestra-piano-integration/blob/main/README.md#license)
 
-This code is provided under the MIT License. See the  [LICENSE](https://github.com/Jeeemcol/get-email-adestra-piano-integration/blob/main/LICENSE)  file for details.
+This code is provided under the MIT License. See the  [LICENSE](https://github.com/Jeeemcol/catsperkm/blob/main/LICENSE)  file for details.
 
 ## Author
 
