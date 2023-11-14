@@ -6,6 +6,12 @@ Install requirements from `requirements.txt`
 ```
 $ pip install -r requirements.txt
 ```
+## DB config
+If you want to use the DB section, have a MariaDB/MySQL instance setup you can connect to and add a config.py with your credentials as per db.py:
+```
+from config import DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE
+```
+
 ## Run
 ### Into database
 If you want to load the transformed data into a database, run `csv_to_sql_import.py`
@@ -52,6 +58,7 @@ http://data.defra.gov.uk/Agriculture/APHA0384-Cats_Per_Km.csv
 * pypi OS grid converting 
 https://pypi.org/project/OSGridConverter/
 * map OS points onto a map of the UK
+* other analyses
 
 ## [License](https://github.com/Jeeemcol/get-email-adestra-piano-integration/blob/main/README.md#license)
 
