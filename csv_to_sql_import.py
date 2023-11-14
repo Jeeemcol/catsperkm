@@ -1,6 +1,7 @@
 """
-Runs the program to process cats per km csv creates database
-(mariadb), table and uploads the data.
+Runs the program to process cats per km from the csv 
+then creates the database (mariadb), table and 
+uploads the data
 """
 from urllib.parse import quote_plus
 from sqlalchemy import create_engine
@@ -16,7 +17,8 @@ connection = Database.setup()
 encoded_password = quote_plus(DB_PASSWORD)
 
 engine = create_engine(
-    f"mysql+mysqlconnector://{DB_USER}:{encoded_password}@{DB_HOST}/{DB_DATABASE}"
+    f"mysql+mysqlconnector://{DB_USER}:{encoded_password}"
+    f"@{DB_HOST}/{DB_DATABASE}"
 )
 
 # use sqlalchemy engine to write using the dataframe to_sql method

@@ -1,5 +1,7 @@
 """
 Manages database functions
+Adapted from:
+dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
 """
 import logging
 import time
@@ -33,10 +35,6 @@ class DB:
         self.logger.addHandler(file_handler)
 
     def _connect(self):
-        """
-        Adapted from:
-        https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
-        """
         attempts = 3
         delay = 2
         attempt = 1
@@ -53,7 +51,6 @@ class DB:
                     self.logger.info("Connected successfully")
                     return True
                 except mysql.connector.Error as err:
-                    #%s--string
                     self.logger.error("Connection failed: %s", err)
                     self.connection = None
                 # Progressive reconnect delay
@@ -82,7 +79,6 @@ class DB:
                 self.logger.error("Create db failed: %s", err)
 
     def _create_table(self):
-        
         """
         Create the CREATE TABLE statement with dynamic precision
         and dynamic scale for the decimal, as a multi line f-string

@@ -14,16 +14,10 @@ df['CatsPerKm'] = df['CatsPerKm'].replace(',', '', regex=True).astype(float)
 def calc_precision():
     """
     Calculates the precision of the cats per km column for SQL decimal.
-    df (dataframe) is the structure, not an object, etc. It has specific
-    location parameters defined that we're selecting (the 'CatsPerKm'
-    column and the second row (starts at 0) and then applying map() to
-    the result.
     For each column it runs a lambda function which calculates the length
     element-wise after . is replaced with nothing (so the dot is taken out).
-    Then the resulting DataFrame (which doesn't persist beyond this line)
-    is checked with the max function. At which point whichever length is max 
-    is returned. We then have our value for precision we need to specify 
-    in the db
+    Then the resulting DataFrame is checked with the max function.
+    We then have our value for precision we need to specify in the db
     """
     precision = df['CatsPerKm'][1:].map(lambda x:
                                         len(str(x).replace('.', ''))).max()
